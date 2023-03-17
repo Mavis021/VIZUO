@@ -1,22 +1,44 @@
-var totalBars = 20;
+var totalHeapBars = 20;
 var sortBtn = document.getElementById("sort");
 var newArrayBtn = document.getElementById("newArray");
 var mArrayBtn = document.getElementById("sizeArray");
 var aArrayBtn = document.getElementById("sizeArray2");
 
-var speed = 0.5;
+var speed = 1;
 document.getElementById("counting").innerText = speed;
   
 function increment() {
-    if (speed < 2)
-    speed = speed + 0.5;
+    if (speed < 3)
+    speed++;
     document.getElementById("counting").innerText = speed;
 }
 
 function decrement() {
-    if(speed > 0.5)
-    speed = speed - 0.5;
+    if(speed > 1)
+    speed-- ;
     document.getElementById("counting").innerText = speed;
+}
+
+//size increment or decrement
+document.getElementById("sizeCount").innerText = totalHeapBars;
+function incrementSize() {
+    if (totalHeapBars < 25)
+    {
+    totalHeapBars++;
+    getArray(totalHeapBars);
+    getIndex(totalHeapBars);
+    }
+    document.getElementById("sizeCount").innerText = totalHeapBars;
+}
+
+function decrementSize() {
+    if(totalHeapBars > 15)
+    {
+    totalHeapBars--;
+    getArray(totalHeapBars);
+    getIndex(totalHeapBars);
+    }
+    document.getElementById("sizeCount").innerText = totalHeapBars;
 }
 
   function deleteChild() {
@@ -58,23 +80,19 @@ function decrement() {
     document.querySelector("#sizeArray").disabled= false;
     document.querySelector("#sizeArray2").disabled = false;
   }
-  
-  function newRandom(){
-    location.reload();
-  }
 
-function play()
-{
-  HeapSort(totalBars);
-}
-
+    
   newArray.addEventListener("click",function(){
     enableSortingBtn();
-    newRandom();
+    enableArraySizeBtn();
+    getArray(totalHeapBars);
+    getIndex(totalHeapBars);
   });
 
   sortBtn.addEventListener("click", async function(){
     disableSortingBtn();
-    disableNewArray()
-    play();
+    disableNewArray();
+    disableArraySizeBtn();
+    await HeapSort(totalHeapBars);
    });
+

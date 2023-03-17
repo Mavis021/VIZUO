@@ -1,5 +1,5 @@
 
-const getTreeData = () => {
+const getTreeData = (i) => {
   var blocks = document.querySelectorAll(".block");
     return {element: Number(blocks[0].childNodes[0].innerHTML),
       left: {
@@ -23,14 +23,16 @@ const getTreeData = () => {
             element: Number(blocks[9].childNodes[0].innerHTML),
             left:{element: Number(blocks[19].childNodes[0].innerHTML),},
           },
-          right:{element: Number(blocks[10].childNodes[0].innerHTML)},
+          right:{element: Number(blocks[10].childNodes[0].innerHTML),
+          },
         },
       },
       right: {
         element: Number(blocks[2].childNodes[0].innerHTML),
         left: {
           element: Number(blocks[5].childNodes[0].innerHTML),
-          left:{element: Number(blocks[11].childNodes[0].innerHTML),},
+          left:{element: Number(blocks[11].childNodes[0].innerHTML),
+          },
           right:{element: Number(blocks[12].childNodes[0].innerHTML)},
         },
         right: {
@@ -76,8 +78,8 @@ const getTreeData = () => {
     `;
   };
   
-  const main = () => {
-    const rootNode = getTreeData();
+  const main = (nodes) => {
+    const rootNode = getTreeData(nodes);
     const treeDOMElement = document.querySelector('.tree');
     treeDOMElement.innerHTML = renderBinaryTree(rootNode);
   };
