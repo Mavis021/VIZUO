@@ -84,4 +84,4 @@ const getTreeData = (i) => {
     treeDOMElement.innerHTML = renderBinaryTree(rootNode);
   };
   
-  main();
+ main(totalHeapBars);

@@ -94,7 +94,7 @@ async function Heapify(n, i) {
       blocks[largest].childNodes[0].innerText;
       blocks[largest].childNodes[0].innerText = temp2;
 
-      main(totalHeapBars);
+      //main(totalHeapBars);
       await delay(800);
  
       blocks[i].style.backgroundColor = "#6b5b95";
@@ -111,7 +111,7 @@ async function Heapify(n, i) {
     var indexBox = document.querySelectorAll(".block2");
     
     // Build heap (rearrange array)
-    for (var i = n / 2 - 1; i >= 0; i--) {
+    for (var i = Math.floor(n / 2) - 1; i >= 0; i--) {
       await Heapify(n, i);
     }
     
@@ -130,7 +130,7 @@ async function Heapify(n, i) {
       blocks[0].childNodes[0].innerText;
       blocks[0].childNodes[0].innerText = temp2;
       
-      main(totalHeapBars);
+      //main(totalHeapBars);
       blocks[0].style.backgroundColor = "#6b5b95";
       blocks[i].style.backgroundColor = "rgb(26, 129, 26)";
       indexBox[i].style.backgroundColor = "rgb(26, 129, 26)";
